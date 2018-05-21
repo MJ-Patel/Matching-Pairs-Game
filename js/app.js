@@ -5,6 +5,7 @@ let count = 0;
 let firstGuess = '';
 let secondGuess = '';
 let previousTarget = null;
+let delay = 1200;
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -45,11 +46,11 @@ for (var i = 0; i < cardsArray.length; i++) {
     }
     if (firstGuess !== '' && secondGuess !== '') {
       if (firstGuess === secondGuess) {
-        match();
-        guessesReset();
+        setTimeout(match, delay);
+        setTimeout(guessesReset, delay);
       }
       else {
-        guessesReset();
+        setTimeout(guessesReset, delay);
       }
     }
     previousTarget = clicked;
