@@ -31,3 +31,7 @@ body {
   align-content: center;
   justify-content: center;
 }
+
+.selected {
+  border: 4px solid blue;
+}
