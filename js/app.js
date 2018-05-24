@@ -4,10 +4,9 @@ const deck = document.querySelector('.deck');
 let count = 0;
 let firstGuess = '';
 let secondGuess = '';
-let previousTarget = null;
-let delay = 1200;
+const delay = 1100;
 let moves = 0;
-let counter = document.querySelector('.moves');
+const counter = document.querySelector('.moves');
 const stars = document.querySelectorAll('.fa-star')
 
 function shuffle(array) {
@@ -37,11 +36,11 @@ for (var i = 0; i < cardsArray.length; i++) {
     count++;
     if (count === 1) {
       firstGuess = clicked.dataset.name;
-      clicked.classList.add('selected', 'disabled');
+      clicked.classList.add('selected')
     }
     else {
       secondGuess = clicked.dataset.name;
-      clicked.classList.add('selected', 'disabled');
+      clicked.classList.add('selected');
     }
     if (count === 2) {
       moveCounter();
@@ -52,8 +51,8 @@ for (var i = 0; i < cardsArray.length; i++) {
         setTimeout(guessesReset, delay);
       }
       else {
+        setTimeout(notMatched, delay);
         setTimeout(enable, delay);
-        setTimeout(guessesReset, delay);
       }
     }
   }
@@ -70,13 +69,12 @@ function match() {
 function moveCounter() {
   moves++;
   counter.innerHTML = moves;
-
+  textMoves();
   if (moves > 8 && moves < 12) {
       for (var i = 0; i < stars.length; i++) {
         if (i > 1) {
           stars[i].style.visibility = 'collapse'
         }
-
       }
   }
   else if (moves > 15) {
@@ -89,13 +87,15 @@ function moveCounter() {
 };
 
 function guessesReset() {
+  count = 0;
   firstGuess = '';
   secondGuess = '';
-  count = 0;
-  let selected = document.querySelectorAll('.selected');
-  selected.forEach(function(card) {
-  card.classList.remove('selected');
-  })
+  setTimeout(function() {
+    let selected = document.querySelectorAll('.selected');
+    selected.forEach(function(card) {
+    card.classList.remove('selected', 'unmatched');
+    })
+  }, delay)
 };
 
 function enable() {
@@ -104,3 +104,21 @@ function enable() {
   card.classList.remove('disabled');
   })
 }
+
+function notMatched() {
+  let selected = document.querySelectorAll('.selected');
+  selected.forEach(function(card) {
+  card.classList.add('unmatched');
+  })
+  guessesReset();
+};
+
+function textMoves() {
+  let textMoves = document.querySelector('.textMoves');
+  if (moves === 1) {
+    textMoves.innerHTML = 'Move';
+  }
+  else if (moves > 1) {
+    textMoves.innerHTML = 'Moves'
+  }
+};
