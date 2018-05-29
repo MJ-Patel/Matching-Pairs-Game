@@ -37,7 +37,7 @@ h1 {
 .score-panel {
 	text-align: left;
   width: 30%;
-  margin: 1.5625em 0 0.3125em 0;
+  margin: 0.3125em auto;
   font-size: 1.25em;
   color: #f97a05;
 }
@@ -55,7 +55,7 @@ h1 {
 .score-panel .restart {
 	float: right;
 	cursor: pointer;
-  font-size: 1.5625em;
+  font-size: 1em;
   margin-right: 1.875em;
   color: #049960  ;
 }
@@ -67,7 +67,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  background: linear-gradient(225deg, #f49e85, #ffc576, #74B0D8);
   border-radius: 1.25em;
 }
 
@@ -78,7 +78,7 @@ h1 {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #84767e;
+  background-color: ghostwhite;
   border-radius: 10px;
   height: 120px;
   width: 120px;
@@ -99,7 +99,7 @@ h1 {
 }
 
 .deck .card.match {
-  background-color: #47ea15;
+  background-color: #29a535;
   font-size: 3.125em;
   animation-name: tada;
 	backface-visibility: visible !important;
