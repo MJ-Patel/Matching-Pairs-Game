@@ -9,6 +9,10 @@ let moves = 0;
 const counter = document.querySelector('.moves');
 let star = document.getElementsByClassName('fa-star');
 let starsArray = [...star];
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let timer = document.querySelector('.timer');
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -49,7 +53,7 @@ for (var i = 0; i < cardsArray.length; i++) {
     if (firstGuess !== '' && secondGuess !== '') {
       if (firstGuess === secondGuess) {
         match();
-        setTimeout(guessesReset, delay);
+        guessesReset()
       }
       else {
         notMatched();
@@ -126,6 +130,7 @@ function textMoves() {
   let textMoves = document.querySelector('.textMoves');
   if (moves === 1) {
     textMoves.innerHTML = 'Move';
+    timerStart();
   }
   else if (moves > 1) {
     textMoves.innerHTML = 'Moves'
@@ -142,5 +147,20 @@ function reset() {
 
   moves = 0;
   counter.innerHTML = moves;
+}
 
+function timerStart() {
+
+  setInterval(function() {
+    seconds++;
+    timer.innerHTML = minutes+' mins '+seconds+' secs';
+    if (seconds === 60) {
+      minutes++;
+      seconds = 0;
+    }
+    if (minutes === 60) {
+      hours++;
+      minutes = 0;
+    }
+  }, 1000)
 }
