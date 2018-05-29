@@ -51,8 +51,7 @@ for (var i = 0; i < cardsArray.length; i++) {
         setTimeout(guessesReset, delay);
       }
       else {
-        setTimeout(notMatched, delay);
-        setTimeout(enable, delay);
+        notMatched();
       }
     }
   }
@@ -63,6 +62,7 @@ function match() {
   let selected = document.querySelectorAll('.selected');
   selected.forEach(function(card) {
   card.classList.add('match');
+  disable();
   })
 };
 
@@ -96,20 +96,28 @@ function guessesReset() {
     card.classList.remove('selected', 'unmatched');
     })
   }, delay)
+  setTimeout(enable, delay);
 };
 
-function enable() {
-  let selected = document.querySelectorAll('.selected');
-  selected.forEach(function(card) {
-  card.classList.remove('disabled');
-  })
+function disable(){
+    cardsArray.forEach(function(card){
+        card.classList.add('disabled');
+    });
+}
+
+function enable () {
+  cardsArray.forEach(function(card){
+      card.classList.remove('disabled');
+  });
 }
 
 function notMatched() {
   let selected = document.querySelectorAll('.selected');
+  let unmatched = document.querySelectorAll('unmatched')
   selected.forEach(function(card) {
   card.classList.add('unmatched');
   })
+  disable();
   guessesReset();
 };
 
