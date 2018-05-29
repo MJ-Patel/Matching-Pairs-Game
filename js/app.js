@@ -7,7 +7,8 @@ let secondGuess = '';
 const delay = 1100;
 let moves = 0;
 const counter = document.querySelector('.moves');
-const stars = document.querySelectorAll('.fa-star')
+let star = document.getElementsByClassName('fa-star');
+let starsArray = [...star];
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -47,7 +48,7 @@ for (var i = 0; i < cardsArray.length; i++) {
     }
     if (firstGuess !== '' && secondGuess !== '') {
       if (firstGuess === secondGuess) {
-        setTimeout(match, delay);
+        match();
         setTimeout(guessesReset, delay);
       }
       else {
@@ -71,18 +72,18 @@ function moveCounter() {
   counter.innerHTML = moves;
   textMoves();
   if (moves > 8 && moves < 12) {
-      for (var i = 0; i < stars.length; i++) {
+      starsArray.forEach(function(star, i) {
         if (i > 1) {
-          stars[i].style.visibility = 'collapse'
+          star.style.visibility = 'collapse'
         }
-      }
+      })
   }
   else if (moves > 15) {
-    for (var i = 0; i < stars.length; i++) {
+      starsArray.forEach(function(star, i) {
       if (i > 0) {
-        stars[i].style.visibility = 'collapse'
+        star.style.visibility = 'collapse'
       }
-    }
+    })
   }
 };
 
@@ -130,3 +131,16 @@ function textMoves() {
     textMoves.innerHTML = 'Moves'
   }
 };
+
+function reset() {
+  cardsArray.forEach(function(card) {
+    card.classList.remove('match')
+  })
+  starsArray.forEach(function(star) {
+    star.style.visibility = 'visible';
+  })
+
+  moves = 0;
+  counter.innerHTML = moves;
+
+}
