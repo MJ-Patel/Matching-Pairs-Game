@@ -1,100 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matching Pairs Game!</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
 </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Memory Game</h1>
-      </header>
 
-      <section class="score-panel">
-        <ul class="stars">
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-        </ul>
+<body>
+  <div class="container">
 
-        <span class="moves">0</span>
-        <span class="textMoves">Moves</span>
+    <header>
+      <h1>Memory Game</h1>
+    </header>
 
-        <div class="timer">
-        </div>
+    <section class="score-panel">
 
-        <div class="restart" onclick="reset()">
-          <i class="fas fa-redo"></i>
-        </div>
-      </section>
-
-      <ul class="deck">
-        <li class="card" data-name="anchor">
-          <i class="fa fa-anchor"></i>
-        </li>
-        <li class="card" data-name="bell">
-          <i class="fa fa-bell"></i>
-        </li>
-        <li class="card" data-name="database">
-          <i class="fa fa-database"></i>
-        </li>
-        <li class="card" data-name="headphones">
-          <i class="fa fa-headphones"></i>
-        </li>
-        <li class="card" data-name="key">
-          <i class="fa fa-key"></i>
-        </li>
-        <li class="card" data-name="infinity">
-          <i class="fa fa-infinity"></i>
-        </li>
-        <li class="card" data-name="save">
-          <i class="fa fa-save"></i>
-        </li>
-        <li class="card" data-name="pallet">
-          <i class="fa fa-pallet"></i>
-        </li>
-        <li class="card" data-name="anchor">
-          <i class="fa fa-anchor"></i>
-        </li>
-        <li class="card" data-name="bell">
-          <i class="fa fa-bell"></i>
-        </li>
-        <li class="card" data-name="database">
-          <i class="fa fa-database"></i>
-        </li>
-        <li class="card" data-name="headphones">
-          <i class="fa fa-headphones"></i>
-        </li>
-        <li class="card" data-name="key">
-          <i class="fa fa-key"></i>
-        </li>
-        <li class="card" data-name="infinity">
-          <i class="fa fa-infinity"></i>
-        </li>
-        <li class="card" data-name="save">
-          <i class="fa fa-save"></i>
-        </li>
-        <li class="card" data-name="pallet">
-          <i class="fa fa-pallet"></i>
-        </li>
+      <ul class="stars">
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
       </ul>
-      <div id="congratsModal" class="modal">
-        <div class="modal-content">
+
+      <span class="moves">0</span>
+      <span class="textMoves">Moves</span>
+      <div class="timer"></div>
+      <div class="restart" onclick="reset()">
+        <i class="fas fa-redo"></i>
+      </div>
+    </section>
+
+    <ul class="deck">
+      <li class="card" data-name="anchor">
+        <i class="fa fa-anchor"></i>
+      </li>
+      <li class="card" data-name="bell">
+        <i class="fa fa-bell"></i>
+      </li>
+      <li class="card" data-name="database">
+        <i class="fa fa-database"></i>
+      </li>
+      <li class="card" data-name="headphones">
+        <i class="fa fa-headphones"></i>
+      </li>
+      <li class="card" data-name="key">
+        <i class="fa fa-key"></i>
+      </li>
+      <li class="card" data-name="infinity">
+        <i class="fa fa-infinity"></i>
+      </li>
+      <li class="card" data-name="save">
+        <i class="fa fa-save"></i>
+      </li>
+      <li class="card" data-name="pallet">
+        <i class="fa fa-pallet"></i>
+      </li>
+      <li class="card" data-name="anchor">
+        <i class="fa fa-anchor"></i>
+      </li>
+      <li class="card" data-name="bell">
+        <i class="fa fa-bell"></i>
+      </li>
+      <li class="card" data-name="database">
+        <i class="fa fa-database"></i>
+      </li>
+      <li class="card" data-name="headphones">
+        <i class="fa fa-headphones"></i>
+      </li>
+      <li class="card" data-name="key">
+        <i class="fa fa-key"></i>
+      </li>
+      <li class="card" data-name="infinity">
+        <i class="fa fa-infinity"></i>
+      </li>
+      <li class="card" data-name="save">
+        <i class="fa fa-save"></i>
+      </li>
+      <li class="card" data-name="pallet">
+        <i class="fa fa-pallet"></i>
+      </li>
+    </ul>
+
+    <div id="congratsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
           <span class="close" onclick="closeModal()">&times;</span>
           <h3>Well Done! Congrats!</h3>
+        </div>
+        <div class="modal-body">
           <p>You made a total of <span id="total-moves"></span> moves </p>
           <p>with a time of <span id="final-time"></span></p>
           <p>Your Rating: <span id="final-rating"></span></p>
-          <div class="play-again" onclick="reset(); closeModal();">
-            Play Again!
-          </div>
+        </div>
+        <div class="modal-footer">
+          <h3 class="play-again" onclick="reset(); closeModal();">Play Again!</h3>
         </div>
       </div>
+
     </div>
 
-    <script src="js/app.js"></script>
-  </body>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+
 </html>
