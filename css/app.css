@@ -14,9 +14,11 @@ html, body {
 }
 
 body {
-  background: url('../img/mountain.png');
-  background-size: contain;
-  font-family: 'Titillium Web', sans-serif;
+  background: url(../img/mountain.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .container {
@@ -28,7 +30,7 @@ body {
 
 h1 {
   color: #1ea896;
-  margin: 0;
+  margin: 0.5em 0 0 0;
 }
 
 h3 {
@@ -37,9 +39,9 @@ h3 {
 
 .score-panel {
   text-align: left;
-  width: 30%;
+  width: 85%;
   margin: 0.3125em auto;
-  font-size: 1.25em;
+  font-size: 0.675em;
   color: #454851;
   font-weight: bold;
 }
@@ -63,7 +65,7 @@ h3 {
 }
 
 .deck {
-  max-width: 40%;
+  width: 80%;
   padding: 1.25em 0;
   margin: 0 auto;
   display: flex;
@@ -75,15 +77,15 @@ h3 {
 
 .deck .card {
   display: flex;
-  margin: 10px;
-  padding: 15px;
+  margin: 0.495rem;
+  padding: 0.9375rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: ghostwhite;
-  border-radius: 10px;
-  height: 120px;
-  width: 120px;
+  border-radius: 0.625rem;
+  height: 3.5rem;
+  width: 3.5rem;
   justify-content: center;
   align-items: center;
   font-size: 0;
@@ -92,7 +94,7 @@ h3 {
 }
 
 .deck .card.selected {
-  font-size: 3.125em;
+  font-size: 2.5em;
   background: #3672d6;
   animation-name: flipInX;
   backface-visibility: visible !important;
@@ -102,7 +104,7 @@ h3 {
 
 .deck .card.match {
   background-color: #29a535;
-  font-size: 3.125em;
+  font-size: 2.5em;
   animation-name: tada;
   backface-visibility: visible !important;
   animation-duration: .75s;
@@ -110,7 +112,7 @@ h3 {
 }
 
 .deck .card.unmatched {
-  font-size: 3.125em;
+  font-size: 2.5em;
   background: #ef6f7f;
   animation-name: shake;
   backface-visibility: visible !important;
@@ -131,30 +133,32 @@ h3 {
   position: fixed;
   z-index: 1;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   overflow: auto;
   text-align: center;
   width: 100%;
   height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .modal-content {
   background-color: ghostwhite;
   border-radius: 1em;
   margin: 15% auto;
-  width: 50%;
-  padding: 1em;
+  width: 85%;
+  padding: 1%;
 }
 
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 2.5em;
   font-weight: bold;
-  position: absolute;
-  top: 30%;
-  right: 26%;
-}
+  position: relative;
+  bottom: 20px;
+  right: 10px;
+  }
 
 .close:hover, .close:focus {
   color: red;
@@ -170,8 +174,8 @@ h3 {
   border-radius: 0.5em;
   background-color: royalblue;
   color: white;
-  display: inline;
-  padding: 0.5em 5em;
+  display: inline-block;
+  padding: 0.5em 2em;
 }
 
 .play-again:hover, .play-again:focus {
@@ -277,5 +281,37 @@ h3 {
   }
   100% {
     transform: translate(0px, 0px);
+  }
+}
+
+@media (min-width: 768px) {
+  .deck {
+    width: 36rem;
+  }
+
+  .deck .card {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .score-panel {
+    width: 36rem;
+    font-size: 1.5em;
+  }
+
+  .modal{
+
+  }
+}
+
+@media (max-width: 320px) {
+  .deck{
+    width: 85%;
+    font-size: 0.45em;
+  }
+
+  .deck .card {
+    width: 3.25rem;
+    height: 3.25rem;
   }
 }
