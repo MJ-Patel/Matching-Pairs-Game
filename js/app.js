@@ -86,13 +86,13 @@ function moveCounter() {
   moves++;
   counter.innerHTML = moves;
   textMoves();
-  if (moves > 8 && moves < 12) {
+  if (moves > 12 && moves < 19) {
     starsArray.forEach(function(star, i) {
       if (i > 1) {
         star.style.visibility = 'collapse'
       }
     })
-  } else if (moves > 15) {
+  } else if (moves > 20) {
     starsArray.forEach(function(star, i) {
       if (i > 0) {
         star.style.visibility = 'collapse'
@@ -148,7 +148,7 @@ function textMoves() {
 
 function reset() {
   cardsArray.forEach(function(card) {
-    card.classList.remove('match', 'selected')
+    card.classList.remove('match', 'unmatched' ,'selected', 'disabled')
   })
   starsArray.forEach(function(star) {
     star.style.visibility = 'visible';
@@ -156,10 +156,12 @@ function reset() {
   count = 0;
   moves = 0;
   counter.innerHTML = moves;
+
+  clearInterval(interval);
   seconds = 0;
   minutes = 0;
   hours = 0;
-  timer.innerHTML = minutes + ' mins ' + seconds + ' secs';
+  timer.innerHTML = minutes + ' min(s) ' + seconds + ' secs(s)';
 
   shuffleCards();
 }
