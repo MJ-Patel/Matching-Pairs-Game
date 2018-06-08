@@ -37,6 +37,8 @@ h3 {
   margin: auto;
 }
 
+/* Styling for the score panel*/
+
 .score-panel {
   text-align: left;
   width: 85%;
@@ -63,6 +65,13 @@ h3 {
   font-size: 1em;
   margin-right: 1.875em;
 }
+
+.timer {
+  display: inline-block;
+  margin: 0 0.625em;
+}
+
+/* Styling for the deck and all the cards*/
 
 .deck {
   width: 80%;
@@ -123,10 +132,7 @@ h3 {
   pointer-events: none;
 }
 
-.timer {
-  display: inline-block;
-  margin: 0 0.625em;
-}
+/*Styling for modal after game is won*/
 
 .modal {
   display: none;
@@ -158,7 +164,7 @@ h3 {
   position: relative;
   bottom: 20px;
   right: 10px;
-  }
+}
 
 .close:hover, .close:focus {
   color: red;
@@ -182,6 +188,10 @@ h3 {
   color: greenyellow;
   cursor: pointer;
 }
+
+/*Animations for the cards*/
+
+/*Animations generated though http://cssanimate.com/*/
 
 @keyframes flipInX {
   0% {
@@ -284,32 +294,30 @@ h3 {
   }
 }
 
+/*Media query for larger screens*/
+
 @media (min-width: 768px) {
   .deck {
     width: 36rem;
   }
-
   .deck .card {
     width: 7.5rem;
     height: 7.5rem;
   }
-
   .score-panel {
     width: 36rem;
     font-size: 1.5em;
   }
-
-  .modal{
-
-  }
+  .modal {}
 }
 
+/*Media query for smaller screens*/
+
 @media (max-width: 320px) {
-  .deck{
+  .deck {
     width: 85%;
     font-size: 0.45em;
   }
-
   .deck .card {
     width: 3.25rem;
     height: 3.25rem;
