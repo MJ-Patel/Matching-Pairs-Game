@@ -44,8 +44,7 @@ let interval;
  *@returns {array} new array of shuffled cards
  */
 function shuffle(array) {
-  let currentIndex = array.length,
-    temporaryValue, randomIndex;
+  let currentIndex = array.length,temporaryValue, randomIndex;
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -58,12 +57,12 @@ function shuffle(array) {
 
 // Shuffled cards appended to deck
 function shuffleCards() {
-  var shuffledCards = shuffle(cardsArray);
+  let shuffledCards = shuffle(cardsArray);
 
-  for (var i = 0; i < shuffledCards.length; i++) {
+  for (let i = 0; i < shuffledCards.length; i++) {
     [].forEach.call(shuffledCards, function(item) {
       deck.appendChild(item);
-    })
+    });
   }
 }
 
@@ -71,7 +70,7 @@ function shuffleCards() {
 document.body.onload = shuffleCards();
 
 // Adds click event to each card
-for (var i = 0; i < cardsArray.length; i++) {
+for (let i = 0; i < cardsArray.length; i++) {
   cardsArray[i].addEventListener('click', function(event) {
     let clicked = event.currentTarget;
     if (count < 2) {
@@ -79,7 +78,7 @@ for (var i = 0; i < cardsArray.length; i++) {
       if (count === 1) {
         // Assigns the type of the card to clicked card
         firstGuess = clicked.dataset.name;
-        clicked.classList.add('selected')
+        clicked.classList.add('selected');
       } else {
         secondGuess = clicked.dataset.name;
         clicked.classList.add('selected');
@@ -100,7 +99,7 @@ for (var i = 0; i < cardsArray.length; i++) {
         }
       }
     }
-  })
+  });
 }
 
 // When two cards are a match
@@ -109,7 +108,7 @@ function match() {
   selected.forEach(function(card) {
     card.classList.add('match');
     disable();
-  })
+  });
 }
 
 // When two cards are not a match
@@ -117,7 +116,7 @@ function notMatched() {
   let selected = document.querySelectorAll('.selected');
   selected.forEach(function(card) {
     card.classList.add('unmatched');
-  })
+  });
   disable();
   guessesReset();
 }
@@ -135,8 +134,8 @@ function guessesReset() {
     let selected = document.querySelectorAll('.selected');
     selected.forEach(function(card) {
       card.classList.remove('selected', 'unmatched');
-    })
-  }, delay)
+    });
+  }, delay);
   setTimeout(enable, delay);
 }
 
@@ -167,15 +166,15 @@ function moveCounter() {
   if (moves > 12 && moves < 19) {
     starsArray.forEach(function(star, i) {
       if (i > 1) {
-        star.style.visibility = 'collapse'
+        star.style.visibility = 'collapse';
       }
-    })
+    });
   } else if (moves > 20) {
     starsArray.forEach(function(star, i) {
       if (i > 0) {
-        star.style.visibility = 'collapse'
+        star.style.visibility = 'collapse';
       }
-    })
+    });
   }
 }
 
@@ -186,18 +185,18 @@ function textMoves() {
     textMoves.innerHTML = 'Move';
     timerStart();
   } else if (moves > 1) {
-    textMoves.innerHTML = 'Moves'
+    textMoves.innerHTML = 'Moves';
   }
 }
 
 // Resets the entire game
 function reset() {
   cardsArray.forEach(function(card) {
-    card.classList.remove('match', 'unmatched', 'selected', 'disabled')
-  })
+    card.classList.remove('match', 'unmatched', 'selected', 'disabled');
+  });
   starsArray.forEach(function(star) {
     star.style.visibility = 'visible';
-  })
+  });
 
   // Resets moves
   count = 0;
@@ -228,7 +227,7 @@ function timerStart() {
       hours++;
       minutes = 0;
     }
-  }, timerDelay)
+  }, timerDelay);
 }
 
 // Diplays the end game modal after all cards have been matched
