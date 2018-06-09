@@ -1,6 +1,9 @@
 # Matching Pairs Game
 Matching Pairs Game Project
 
+## Dependencies
+JavaScript
+
 ## What kind of game is this?
 This is a memory game where the player has to match all 16 cards to each other.
 ![Preview of Matching Pairs Game](/img/snippet.JPG)
