@@ -6,6 +6,7 @@ JavaScript
 
 ## What kind of game is this?
 This is a memory game where the player has to match all 16 cards to each other.
+
 <img src="/img/snippet.JPG" width="250" height="300" />
 
 ### Challenge
