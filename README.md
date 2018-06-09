@@ -6,7 +6,7 @@ JavaScript
 
 ## What kind of game is this?
 This is a memory game where the player has to match all 16 cards to each other.
-![Preview of Matching Pairs Game](/img/snippet.JPG)
+![Preview of Matching Pairs Game](/img/snippet.JPG | width=100)
 
 ### Challenge
 Get a star rating of 3 by making no more than 12 moves.
